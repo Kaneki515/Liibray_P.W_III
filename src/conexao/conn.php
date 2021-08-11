@@ -1,9 +1,11 @@
 <?php
 
-    $hostmane = "fdb18.awardspace.net";
-    $dbname = "3832546_librarytcc";
-    $username = "3832546_librarytcc";
-    $password = "Sarahlinda515";
+$hostmane = "fdb18.awardspace.net";
+$dbname = "3832546_librarytcc";
+$username = "3832546_librarytcc";
+$password = "Sarahlinda515";
+
+    
 
     try {
         $pdo = new PDO('mysql:host='.$hostmane.';dbname='.$dbname, $username, $password);

@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
-    $('#table-tipo').on('click', 'button.btn-delete', function(e) {
+    $('#table-curso').on('click', 'button.btn-delete', function(e) {
 
         e.preventDefault()
 
-        let IDTIPO_USUARIO = `IDTIPO_USUARIO=${$(this).attr('id')}`
+        let IDCURSO = `IDCURSO=${$(this).attr('id')}`
 
         Swal.fire({
             title: 'Library',
@@ -12,7 +12,7 @@ $(document).ready(function() {
             icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Sim',
-            cancelButtonText: 'NÃO'
+            cancelButtonText: 'Não'
         }).then((result) => {
 
             if (result.value) {
@@ -21,8 +21,8 @@ $(document).ready(function() {
                     type: 'POST',
                     dataType: 'json',
                     assync: true,
-                    data: IDTIPO_USUARIO,
-                    url: "src/tipo-usuario/model/delete-tipo.php",
+                    data: IDCURSO,
+                    url: "src/curso/model/delete-curso.php",
                     success: function(dados) {
                         Swal.fire({
                             title: 'Library',
@@ -31,7 +31,7 @@ $(document).ready(function() {
                             confirmButtonText: 'OK'
                         })
 
-                        $('#table-tipo').DataTable().ajax.reload()
+                        $('#table-curso').DataTable().ajax.reload()
                     }
                 })
 

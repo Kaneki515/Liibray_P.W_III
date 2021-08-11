@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema 3832546_librarytcc
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `3832546_librarytcc` DEFAULT CHARACTER SET utf8 ;
-USE `3832546_librarytcc` ;
+CREATE SCHEMA IF NOT EXISTS  3914630_tcchideki DEFAULT CHARACTER SET utf8 ;
+USE  3914630_tcchideki ;
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`TIPO_USUARIO`
+-- Table  3914630_tcchideki.`TIPO_USUARIO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`TIPO_USUARIO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`TIPO_USUARIO` (
   `IDTIPO_USUARIO` INT NOT NULL AUTO_INCREMENT,
   `DESCRICAO` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`IDTIPO_USUARIO`))
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`EIXO`
+-- Table  3914630_tcchideki.`EIXO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`EIXO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`EIXO` (
   `IDEIXO` INT NOT NULL AUTO_INCREMENT,
   `NOME` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`IDEIXO`))
@@ -38,9 +38,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`CURSO`
+-- Table  3914630_tcchideki.`CURSO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`CURSO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`CURSO` (
   `IDCURSO` INT NOT NULL AUTO_INCREMENT,
   `NOME` VARCHAR(100) NOT NULL,
   `EIXO_IDEIXO` INT NOT NULL,
@@ -48,16 +48,16 @@ CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`CURSO` (
   INDEX `fk_CURSO_EIXO1_idx` (`EIXO_IDEIXO` ASC),
   CONSTRAINT `fk_CURSO_EIXO1`
     FOREIGN KEY (`EIXO_IDEIXO`)
-    REFERENCES `3832546_librarytcc`.`EIXO` (`IDEIXO`)
+    REFERENCES  3914630_tcchideki.`EIXO` (`IDEIXO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`USUARIO`
+-- Table  3914630_tcchideki.`USUARIO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`USUARIO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`USUARIO` (
   `IDUSUARIO` INT NOT NULL AUTO_INCREMENT,
   `NOME` VARCHAR(150) NOT NULL,
   `EMAIL` VARCHAR(255) NOT NULL,
@@ -69,21 +69,21 @@ CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`USUARIO` (
   INDEX `fk_USUARIO_CURSO1_idx` (`CURSO_IDCURSO` ASC),
   CONSTRAINT `fk_USUARIO_TIPO_USUARIO`
     FOREIGN KEY (`TIPO_USUARIO_IDTIPO_USUARIO`)
-    REFERENCES `3832546_librarytcc`.`TIPO_USUARIO` (`IDTIPO_USUARIO`)
+    REFERENCES  3914630_tcchideki.`TIPO_USUARIO` (`IDTIPO_USUARIO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_USUARIO_CURSO1`
     FOREIGN KEY (`CURSO_IDCURSO`)
-    REFERENCES `3832546_librarytcc`.`CURSO` (`IDCURSO`)
+    REFERENCES  3914630_tcchideki.`CURSO` (`IDCURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`TRABALHO`
+-- Table  3914630_tcchideki.`TRABALHO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`TRABALHO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`TRABALHO` (
   `IDTRABALHO` INT NOT NULL AUTO_INCREMENT,
   `TITULO` VARCHAR(150) NOT NULL,
   `ANO` INT NOT NULL,
@@ -97,9 +97,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`AUTOR`
+-- Table  3914630_tcchideki.`AUTOR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`AUTOR` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`AUTOR` (
   `USUARIO_IDUSUARIO` INT NOT NULL,
   `TRABALHO_IDTRABALHO` INT NOT NULL,
   PRIMARY KEY (`USUARIO_IDUSUARIO`, `TRABALHO_IDTRABALHO`),
@@ -107,21 +107,21 @@ CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`AUTOR` (
   INDEX `fk_USUARIO_has_TRABALHO_USUARIO1_idx` (`USUARIO_IDUSUARIO` ASC),
   CONSTRAINT `fk_USUARIO_has_TRABALHO_USUARIO1`
     FOREIGN KEY (`USUARIO_IDUSUARIO`)
-    REFERENCES `3832546_librarytcc`.`USUARIO` (`IDUSUARIO`)
+    REFERENCES  3914630_tcchideki.`USUARIO` (`IDUSUARIO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_USUARIO_has_TRABALHO_TRABALHO1`
     FOREIGN KEY (`TRABALHO_IDTRABALHO`)
-    REFERENCES `3832546_librarytcc`.`TRABALHO` (`IDTRABALHO`)
+    REFERENCES  3914630_tcchideki.`TRABALHO` (`IDTRABALHO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `3832546_librarytcc`.`HISTORICO`
+-- Table  3914630_tcchideki.`HISTORICO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`HISTORICO` (
+CREATE TABLE IF NOT EXISTS  3914630_tcchideki.`HISTORICO` (
   `IDHISTORICO` INT NOT NULL AUTO_INCREMENT,
   `DATA` DATE NOT NULL,
   `HORA` TIME NOT NULL,
@@ -132,12 +132,12 @@ CREATE TABLE IF NOT EXISTS `3832546_librarytcc`.`HISTORICO` (
   INDEX `fk_HISTORICO_TRABALHO1_idx` (`TRABALHO_IDTRABALHO` ASC),
   CONSTRAINT `fk_HISTORICO_USUARIO1`
     FOREIGN KEY (`USUARIO_IDUSUARIO`)
-    REFERENCES `3832546_librarytcc`.`USUARIO` (`IDUSUARIO`)
+    REFERENCES  3914630_tcchideki.`USUARIO` (`IDUSUARIO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_HISTORICO_TRABALHO1`
     FOREIGN KEY (`TRABALHO_IDTRABALHO`)
-    REFERENCES `3832546_librarytcc`.`TRABALHO` (`IDTRABALHO`)
+    REFERENCES  3914630_tcchideki.`TRABALHO` (`IDTRABALHO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

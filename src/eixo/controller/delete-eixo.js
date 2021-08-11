@@ -1,28 +1,27 @@
 $(document).ready(function() {
 
-    $('#table-tipo').on('click', 'button.btn-delete', function(e) {
+    $('#eixo').on('click', 'button.btn-delete', function(e) {
 
         e.preventDefault()
 
-        let IDTIPO_USUARIO = `IDTIPO_USUARIO=${$(this).attr('id')}`
+        let IDEIXO = `IDEIXO=${$(this).attr('id')}`
 
         Swal.fire({
             title: 'Library',
-            text: 'Deseja realmente excluir o registro?',
+            text: 'Deseja realmente excluir esse registro?',
             icon: 'question',
             showCancelButton: true,
             confirmButtonText: 'Sim',
-            cancelButtonText: 'NÃO'
-        }).then((result) => {
-
+            cancelButtonText: 'Não'
+        }).then((result => {
             if (result.value) {
 
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
                     assync: true,
-                    data: IDTIPO_USUARIO,
-                    url: "src/tipo-usuario/model/delete-tipo.php",
+                    data: IDEIXO,
+                    url: 'src/eixo/model/delete-eixo.php',
                     success: function(dados) {
                         Swal.fire({
                             title: 'Library',
@@ -31,12 +30,11 @@ $(document).ready(function() {
                             confirmButtonText: 'OK'
                         })
 
-                        $('#table-tipo').DataTable().ajax.reload()
+                        $('#eixo').DataTable().ajax.reload()
                     }
                 })
-
             }
+        }))
 
-        })
     })
 })

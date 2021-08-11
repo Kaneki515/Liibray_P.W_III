@@ -26,6 +26,7 @@ $(document).ready(function() {
                         $('#IDTIPO_USUARIO').val(dado.dados.IDTIPO_USUARIO)
                     })
                     $('.btn-save').show()
+                    $('.btn-save').removeAttr('data-operation')
                     $('#modal-tipo').modal('show')
                 }
             }
