@@ -28,14 +28,14 @@
         </div>
     </div>
     <div class="form-group row">
-        <div class="col-10">
+        <div class="col-12">
             <input type="text" name="AUTOR" id="AUTOR" class="form-control" placeholder="Digite o nome do autor...">
-        </div>
-        <div class="col-2">
-            <button class="btn btn-primary btn-find"><i class="fas fa-search"></i> Buscar</button>
         </div>
     </div>
     <div class="form-group" id="autores">
+
+    </div>
+    <div class="form-group" id="result">
 
     </div>
     <div class="form-group">
@@ -43,6 +43,17 @@
         <input type="file" name="ARQUIVO" id="ARQUIVO" class="form-control">
     </div>
     <input type="hidden" name="IDTRABALHO " id="IDTRABALHO ">
+
+    <form method="post" action="upload.php" enctype="multipart/form-data">
+        <label>Imagem:</label>
+        <input type="file" name="arquivo" id="arquivo" action="upload.php" enctype="multipart/form-data" />
+        <input type="button" value="Enviar " id="enviar-formulario" />
+    </form>
+    <div id="mensagem "></div>
+
+
 </form>
 
-<script src="src/trabalho/controller/find-usuario.js"></script>
+
+
+<script src="src/trabalho/controller/find-usuario.js "></script>
