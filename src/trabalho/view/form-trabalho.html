@@ -27,10 +27,9 @@
             <input type="text" name="COORIENTADOR" id="COORIENTADOR" class="form-control">
         </div>
     </div>
-    <div class="form-group row">
-        <div class="col-12">
-            <input type="text" name="AUTOR" id="AUTOR" class="form-control" placeholder="Digite o nome do autor...">
-        </div>
+    <div class="form-group">
+        <label>Autores</label>
+        <input type="text" name="AUTOR" id="AUTOR" class="form-control" placeholder="Digite o nome do autor...">
     </div>
     <div class="form-group" id="autores">
 
@@ -43,17 +42,7 @@
         <input type="file" name="ARQUIVO" id="ARQUIVO" class="form-control">
     </div>
     <input type="hidden" name="IDTRABALHO " id="IDTRABALHO ">
-
-    <form method="post" action="upload.php" enctype="multipart/form-data">
-        <label>Imagem:</label>
-        <input type="file" name="arquivo" id="arquivo" action="upload.php" enctype="multipart/form-data" />
-        <input type="button" value="Enviar " id="enviar-formulario" />
-    </form>
-    <div id="mensagem "></div>
-
-
 </form>
 
-
-
-<script src="src/trabalho/controller/find-usuario.js "></script>
+<script src="src/trabalho/controller/find-usuario.js"></script>
+<script src="src/trabalho/controller/save-trabalho.js"></script>

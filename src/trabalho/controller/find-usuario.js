@@ -5,15 +5,33 @@ function selectAuthor() {
         let idElement = $(this).attr('id')
         let nameElement = $(this).attr('data-name')
 
+
         $('#result').append(`
             <div type="text" class="alert alert-primary">${nameElement}</div>
             <input type="hidden" name="USUARIO_IDUSUARIO" id="USUARIO_IDUSUARIO" value="${idElement}" />`)
 
         $('#' + idElement).hide()
 
+        selectDesf()
+
     })
 }
 
+function selectDesf() {
+
+    $('.alert').click(function(e) {
+        e.preventDefault()
+
+        alert("Você tentou desfixar")
+
+        let idElement = delete('id')
+        let nameElement = delete('data-name')
+
+        $('#result').append(`
+            <div type="text" class="alert alert-primary">${nameElement}</div>
+            <input type="hidden" name="USUARIO_IDUSUARIO" id="USUARIO_IDUSUARIO"value="${idElement}" disabled/>`)
+    })
+}
 $(document).ready(function() {
 
     $('#AUTOR').keyup(function(e) {
@@ -26,7 +44,6 @@ $(document).ready(function() {
         if ($(this).val().length >= 3) {
 
             $('#autores').empty()
-
             $.ajax({
                 dataType: 'json',
                 type: 'POST',
@@ -37,8 +54,11 @@ $(document).ready(function() {
                     $('autores').empty()
                     for (const dado of dados) {
                         $('#autores').append(`<div class="alert alert-secondary" id="${dado.IDUSUARIO}" data-name="${dado.NOME}" role="alert">${dado.NOME}</div>`)
+
                     }
+
                     selectAuthor()
+
                 }
             })
 
