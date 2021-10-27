@@ -69,6 +69,23 @@
                                 ':f' => utf8_decode($requestData['COORIENTADOR']),
                                 ':g' => $novoNome
                             ));
+
+                            $sql = $pdo->query("SELECT * FROM TRABALHO ORDER BY IDTRABALHO DESC LIMIT 1");
+
+                            while($resultado=$sql->fetch(PDO::FETCH_ASSOC)){
+                                $IDTRABALHO = $resultado ['IDTRABALHO'];
+                            }
+
+                            $indice = count(array_filter($requestData['USUARIO_IDUSUARIO']));
+
+                            for($i=0; $i<$indice ;$i++){
+                                $stmt = $pdo -> prepare('INSERT INTO AUTOR (TRABALHO_IDTRABALHO, USUARIO_IDUSUARIO) VALUES (:a, :d)');
+                                $stmt -> execute(array(
+                                    ':a' => $IDTRABALHO,
+                                    ':d' => $requestData['USUARIO_IDUSUARIO'][$i]
+                                ));
+                            }
+
                             $retorno = array(
                                 "tipo" => 'success',
                                 "mensagem" => 'Trabalho cadastrado com sucesso.'

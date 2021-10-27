@@ -1,7 +1,7 @@
 <form id="form-trabalho" enctype="multipart/form-data">
     <div class="form-group">
         <label>Título do trabalho</label>
-        <input type="text" name="NOME" id="TITULO" class="form-control">
+        <input type="text" name="TITULO" id="TITULO" class="form-control">
     </div>
     <div class="form-group row">
         <div class="col-12 col-md-6">
@@ -9,7 +9,7 @@
             <input type="number" name="ANO" id="ANO" class="form-control">
         </div>
         <div class="col-12 col-md-6">
-            <label>Número de páginas</label>
+            <label>Número de Páginas</label>
             <input type="number" name="NROPAGINAS" id="NROPAGINAS" class="form-control">
         </div>
     </div>
@@ -17,6 +17,7 @@
         <label>Resumo</label>
         <textarea id="RESUMO" class="form-control" name="RESUMO" rows="3"></textarea>
     </div>
+
     <div class="form-group row">
         <div class="col-12 col-md-6">
             <label>Orientador</label>
@@ -28,22 +29,16 @@
         </div>
     </div>
     <div class="form-group">
-        <label>Autores</label>
-        <input type="text" name="AUTOR" id="AUTOR" class="form-control" placeholder="Digite o nome do autor...">
+        <input type="text" name="AUTOR[]" id="AUTOR" class="form-control" placeholder="Digite o nome do autor...">
     </div>
-    <div class="form-group" id="autores">
-
-    </div>
-    <div class="form-group" id="result">
-
-    </div>
+    <div class="form-group" id="autores"></div>
+    <div class="form-group" id="listar"></div>
     <div class="form-group">
         <label>Arquivo</label>
         <input type="file" name="ARQUIVO" id="ARQUIVO" class="form-control">
     </div>
-    <input type="hidden" name="IDTRABALHO " id="IDTRABALHO ">
+    <input type="hidden" name="IDTRABALHO" id="IDTRABALHO">
     <input type="hidden" name="operacao" id="operacao" value="insert">
 </form>
-
 <script src="src/trabalho/controller/find-usuario.js"></script>
 <script src="src/trabalho/controller/save-trabalho.js"></script>
